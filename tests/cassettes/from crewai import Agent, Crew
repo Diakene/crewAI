@@ -1,0 +1,42 @@
+from crewai import Agent, Crew
+
+# Définition des agents
+devops = Agent(
+    name="DevOps",
+    role="Ingénieur DevOps",
+    goal="Automatiser le déploiement et la maintenance des applications.",
+    backstory="Expert en CI/CD, cloud et sécurité."
+)
+
+seo = Agent(
+    name="SEO",
+    role="Expert SEO",
+    goal="Optimiser le contenu pour améliorer le référencement naturel.",
+    backstory="Spécialiste des stratégies SEO et analyse de trafic."
+)
+
+redacteur = Agent(
+    name="Rédacteur Web",
+    role="Rédacteur Web",
+    goal="Rédiger des contenus optimisés et engageants.",
+    backstory="Passionné par l’écriture et la vulgarisation."
+)
+
+manager = Agent(
+    name="Manager",
+    role="Manager d’équipe",
+    goal="Superviser et coordonner les agents pour garantir la qualité et l’efficacité.",
+    backstory="Expérience en gestion de projets digitaux et management d’équipes pluridisciplinaires."
+)
+
+# Création de l’équipe
+equipe = Crew(
+    agents=[devops, seo, redacteur],
+    manager=manager,
+    goal="Créer, optimiser et déployer du contenu web performant."
+)
+
+# Exemple d’exécution
+if __name__ == "__main__":
+    resultat = equipe.run("Créer un article de blog optimisé SEO et le déployer en production.")
+    print(resultat)
